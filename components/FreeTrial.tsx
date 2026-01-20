@@ -1,97 +1,150 @@
 "use client";
 
-import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function FreeTrial() {
-  const points = [
-    "Payroll processing for 30–99 employees",
-    "Automatic salary & deduction calculations",
-    "Monthly payslip generation (PDF / CSV / Excel", // Missing closing paren in list? Adding close paren for grammar or stick to verbatim? Image shows "Excel" no closing paren visible usually, let's keep it safe. Actually image text: "Monthly payslip generation (PDF / CSV / Excel" - looks cut off or intentional. I'll add the closing paren for polish.
-    "Employee profile management",
-    "Manage multiple company",
-    "Payroll report generations",
-    "Secure dashboard for administrators",
-  ];
+const plans = [
+  {
+    name: "BASIC PLAN",
+    price: "100",
+    regFee: "2,500",
+    range: "Payroll processing for 0 – 29 employees",
+    features: [
+      "Automatic salary & deduction calculations",
+      "Monthly payslip generation (PDF / CSV / Excel)",
+      "Employee profile management",
+      "Manage multiple company",
+      "Payroll report generations",
+      "Secure dashboard for administrators",
+    ],
+  },
+  {
+    name: "PROFESSIONAL PLAN",
+    price: "75",
+    regFee: "5,000",
+    range: "Payroll processing for 30 – 99 employees",
+    features: [
+      "Automatic salary & deduction calculations",
+      "Monthly payslip generation (PDF / CSV / Excel)",
+      "Employee profile management",
+      "Manage multiple company",
+      "Payroll report generations",
+      "Secure dashboard for administrators",
+    ],
+  },
+  {
+    name: "ENTERPRISE PLAN",
+    price: "50",
+    regFee: "7,500",
+    range: "Payroll processing for 100 or more employees",
+    features: [
+      "Automatic salary & deduction calculations",
+      "Monthly payslip generation (PDF / CSV / Excel)",
+      "Employee profile management",
+      "Manage multiple company",
+      "Payroll report generations",
+      "Secure dashboard for administrators",
+    ],
+  },
+];
 
+export default function Pricing() {
   return (
-    <section id="pricing" className="bg-[#E4E8FC] pt-16 sm:pt-24 pb-16 sm:pb-24 lg:pb-0 overflow-hidden">
+    <section 
+      id="pricing" 
+      className="relative py-16 sm:py-24 bg-white bg-[url('/bgprice.png')] bg-cover bg-center bg-no-repeat"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
-        {/* Top Centered Header */}
+          {/* Section Header*/}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center mb-16"
+          className="mx-auto max-w-4xl text-center mb-16"
         >
-          <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
-            Try It <span className="text-[#42A5E8]">Free</span> one Month
+          
+          <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-gray-900 font-istok mb-8">
+            <span className="text-[#42A5E8]">Transparent Pricing Plans</span> that Scale with <br className="hidden sm:block" />
+            your Business
           </h2>
-          <p className="mt-6 text-[16px] leading-8 text-[#525252] font-inter">
-            We&apos;re offering a free month demo of our advanced <span className="font-bold text-gray-800">PayRoll</span> management
-            system! Try it now to see how it can simplify your work, improve efficiency,
-            and make Employee salaries quickly.
-          </p>
+
+            {/* Notification Banner */}
+            <div className="bg-[#E0F7FA] border border-[#B2EBF2] rounded-lg py-3 px-4 inline-block shadow-sm">
+            <p className="text-[#0C926C] font-bold text-sm sm:text-base font-inter">
+              Register Today – Pay Only the Registration Fee! Subscription charges start from next month.
+            </p>
+            </div>
         </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-9 gap-12 items-center lg:items-end">
-          
-          {/* Left: Basic Plan Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-[#42A5E81A] rounded-3xl p-8 sm:p-10 lg:p-12 lg:mb-24 lg:col-span-4"
-          > 
-            <h3 className="text-2xl font-bold text-gray-900 font-istok mb-8">
-              What Include Our basic Plan ?
-            </h3>
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col bg-white rounded-2xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-shadow duration-300"
+            >
+              {/* Plan Name */}
+              <h3 className="text-center text-xl font-bold tracking-widest text-black uppercase font-istok mb-4">
+                {plan.name}
+              </h3>
+
+              {/* Price Area */}
+              <div className="text-center mb-2">
+                <span className="text-3xl font-bold text-black font-istok">Rs: </span>
+                <span className="text-6xl font-bold text-black font-istok">{plan.price}</span>
+                <span className="text-sm font-medium text-gray-500 ml-2 font-inter">Per employee</span>
+              </div>
+
+              {/* Registration Fee */}
+              <p className="text-center text-sm text-[#9CA3AF] mb-8 font-inter">
+                Rs: {plan.regFee} (one time registration fee)
+              </p>
+
+              {/* Features List */}
+              <ul className="space-y-4 mb-8 flex-1">
             
-            <ul className="space-y-4 mb-10">
-              {points.map((point, index) => (
-                <li key={index} className="flex items-start gap-x-3">
+                <li className="flex items-start gap-x-3">
                   <div className="flex-none rounded-full bg-[#42A5E8] p-1 mt-0.5">
-                    <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                    <Check className="h-3 w-3 text-white" strokeWidth={4} />
                   </div>
-                  <span className="text-[16px] font-regular text-[#000000] font-inter">
-                    {point}
+                  <span className="text-[14px] text-gray-700 font-inter leading-tight">
+                    {plan.range}
                   </span>
                 </li>
-              ))}
-            </ul>
 
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-[#42A5E8] hover:bg-[#3494D6] text-white font-medium py-3 px-8 rounded-lg transition-colors font-inter"
-            >
-              More Details
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </motion.div>
+                {/* Common Features */}
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-x-3">
+                    <div className="flex-none rounded-full bg-[#42A5E8] p-1 mt-0.5">
+                      <Check className="h-3 w-3 text-white" strokeWidth={4} />
+                    </div>
+                    <span className="text-[14px] text-gray-700 font-inter leading-tight">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-          {/* Right: Girl Image */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="relative mx-auto w-full max-w-md lg:max-w-none flex justify-center lg:justify-end lg:col-span-5"
-          >
-            <Image
-              src="/girl.png"
-              alt="Professional using Payroll System"
-              width={600}
-              height={600}
-              className="w-full h-auto object-contain" 
-            />
-          </motion.div>
+              {/* Buttons */}
+              <div className="space-y-3 mt-auto">
+                <button className="w-full flex items-center justify-center gap-2 bg-[#42A5E8] hover:bg-[#3494D6] text-white font-semibold py-3 px-6 rounded-lg transition-colors font-inter">
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                
+                <button className="w-full flex items-center justify-center gap-2 bg-[#E0F2FE] hover:bg-[#D0EBFD] text-[#42A5E8] font-semibold py-3 px-6 rounded-lg transition-colors font-inter">
+                  Contact Us
+                </button>
+              </div>
 
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

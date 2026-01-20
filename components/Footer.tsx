@@ -7,16 +7,18 @@ import { motion } from "framer-motion";
 export default function Footer() {
   return (
     <footer className="w-full">
-      {/* Main Footer Content with Gradient Background */}
+      {/* Main Footer Content with white background */}
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="border-t border-gray-300 bg-gradient-to-b from-white via-[#C0CFE0] to-[#4A647D] pt-16 pb-12"
+        className="bg-white pt-16 pb-12"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          
+          {/* Changed from Grid to Flexbox with justify-between */}
+          <div className="flex flex-col gap-12 lg:flex-row lg:justify-between items-start">
             
             {/* Column 1: Logo & Tagline */}
             <div className="flex flex-col gap-6">
@@ -40,7 +42,7 @@ export default function Footer() {
                 <span className="font-inter text-sm sm:text-base">+94 71 118 6028</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 fill-current" />
+                <Mail className="h-5 w-5 " />
                 <span className="font-inter text-sm sm:text-base">info@cenzios.com</span>
               </div>
               <div className="flex items-center gap-3">
@@ -64,7 +66,7 @@ export default function Footer() {
       </motion.div>
 
       {/* Copyright Bar */}
-      <div className="bg-[#334E68] py-6 text-center text-white border-t border-white/10">
+      <div className="bg-white py-6 text-center text-gray-900 border-t border-gray-100">
         <p className="font-inter text-sm">
           © 2025 Cenzios. All rights reserved.
         </p>

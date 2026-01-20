@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 
 export default function Reporting() {
   const points = [
-    "Summary reports for tax compliance",
-    "Export to CSV, PDF, and Excel",
-    "Historical data tracking for audits",
+    "Manage multiple companies from a single secure dashboard with ease.",
+    "Monitor active employee slots for each company based on specific subscription plans.",
+    "Display total employee’s Salary paid and EPF in one screen.",
   ];
 
   return (
-    <section id="product" className="bg-[#EBEFFE] py-16 sm:py-24 overflow-hidden">
+    <section id="product" className="bg-[#E4E8FC] py-16 sm:py-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-12 items-center">
           
@@ -25,12 +25,11 @@ export default function Reporting() {
             className="mx-auto max-w-xl lg:mx-0"
           >
             <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
-              <span className="text-[#42A5E8] block mb-2">Advanced</span>
-              Payroll Reporting
+              <span className="text-[#42A5E8] block mb-2">Multi-Company</span>
+              Management & Control
             </h2>
             <p className="mt-6 text-[16px] leading-8 text-[#525252] font-inter">
-              Visualize your company&apos;s financial health with real-time reports. 
-              Drill down into specific departments, employee groups, or time periods with ease.
+              Position the platform as a powerful tool for group admins or accountants who handle more than one business entity.
             </p>
             
             <ul className="mt-10 space-y-4">
@@ -63,8 +62,8 @@ export default function Reporting() {
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
             <Image
-              src="/report.png"
-              alt="Advanced Payroll Reporting Dashboard"
+              src="/report1.png"
+              alt="Multi-Company Management & Control Dashboard"
               width={1000}
               height={800}
               className="w-full h-auto drop-shadow-2xl rounded-xl" 

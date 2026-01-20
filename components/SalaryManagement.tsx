@@ -12,7 +12,7 @@ export default function SalaryManagement() {
   ];
 
   return (
-    <section className="bg-[#EBEFFE] py-16 sm:py-24 overflow-hidden">
+    <section className="bg-[#FFFF] py-16 sm:py-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-12 items-center">
           
@@ -42,13 +42,9 @@ export default function SalaryManagement() {
             className="mx-auto max-w-xl lg:mx-0"
           >
             <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
-              <span className="text-[#42A5E8]">Effortless</span> Employee Salary Management
+              <span className="text-[#42A5E8]">Effortless</span> Employee Profile Management
             </h2>
-            <p className="mt-6 text-[16px] leading-8 text-[#525252] font-inter">
-              Keep all your employee data in one centralized, secure location. 
-              From onboarding to offboarding, manage every step of the journey.
-            </p>
-            
+                  
             <ul className="mt-10 space-y-4">
               {points.map((point, index) => (
                 <motion.li 

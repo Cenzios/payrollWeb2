@@ -1,11 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
+  
+  const [activeTab, setActiveTab] = useState("Features");
+
+  
+  const navLinks = [
+    { name: "Features", href: "#features" },
+    { name: "Product", href: "#product" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Contact Us", href: "#contact" },
+  ];
+
   return (
     <motion.header 
       initial={{ y: -100 }}
@@ -23,7 +35,7 @@ export default function Navbar() {
                <Image
                  src="/logo.png"
                  alt="Payroll Logo"
-                 width={128}  // Providing explicit dimensions since 'fill' can be tricky in navbars without specific parent height
+                 width={128} 
                  height={40}
                  className="object-contain object-left"
                  priority
@@ -32,7 +44,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button (Placeholder for functionality) */}
+        {/* Mobile Menu Button */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -43,20 +55,22 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex lg:gap-x-12">
-          <Link href="#features" className="text-sm font-semibold leading-6 text-gray-900 font-inter hover:text-[#42A5E8] transition-colors">
-            Features
-          </Link>
-          <Link href="#product" className="text-sm font-semibold leading-6 text-gray-900 font-inter hover:text-[#42A5E8] transition-colors">
-            Product
-          </Link>
-          <Link href="#pricing" className="text-sm font-semibold leading-6 text-gray-900 font-inter hover:text-[#42A5E8] transition-colors">
-            Pricing
-          </Link>
-          <Link href="#contact" className="text-sm font-semibold leading-6 text-gray-900 font-inter hover:text-[#42A5E8] transition-colors">
-            Contact Us
-          </Link>
+        {/* Desktop Links with Active State Logic */}
+        <div className="hidden lg:flex lg:gap-x-2 items-center">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name}
+              href={link.href}
+              onClick={() => setActiveTab(link.name)} 
+              className={`text-sm font-medium transition-all px-6 py-2.5 rounded-full ${
+                activeTab === link.name 
+                  ? "bg-black text-white" 
+                  : "text-gray-900 hover:bg-gray-100" 
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
       </nav>
