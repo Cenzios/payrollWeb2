@@ -62,7 +62,7 @@ export default function Reporting() {
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
             <Image
-              src="/report1.png"
+              src="/report4.png"
               alt="Multi-Company Management & Control Dashboard"
               width={1000}
               height={800}

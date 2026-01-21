@@ -14,19 +14,19 @@ export default function FAQ() {
     },
     {
       question: "What are the prices of Plans",
-      answer: "We offer competitive pricing tailored to business size. Please check our pricing page or contact sales for a custom quote.",
+      answer: "We offer flexible subscription plans designed to suit businesses of different sizes. Pricing is based on selected features and the number of employee slots.We offer competitive pricing tailored to business size. Please check our pricing page or contact sales for a custom quote.",
     },
     {
       question: "What about the service period?",
-      answer: "Our service periods are flexible. You can choose between monthly or annual subscriptions with the ability to cancel anytime.",
+      answer: "Our service is provided on a subscription basis. You can choose a plan, and services remain active as long as your subscription is valid.",
     },
     {
       question: "Are there any maintenance fees?",
-      answer: "No, there are no hidden maintenance fees. All updates and standard support are included in your subscription plan.",
+      answer: "No hidden maintenance fees apply. System maintenance, updates, and improvements are included in your subscription, ensuring you always have access to the latest features and security updates.",
     },
     {
       question: "Is this software scalable as my business grows?",
-      answer: "Absolutely. Our platform is built to scale with you, handling everything from a small team to a large enterprise without performance loss.",
+      answer: "Absolutely. Our system is built to scale with your business. You can easily upgrade your plan, add more employee slots, and access advanced features as your organization expands.",
     },
   ];
 

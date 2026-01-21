@@ -2,77 +2,142 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+// Import Variants from framern motion
+import { motion, Variants } from "framer-motion";
+
+// Add  Variants type annotation
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+//Add Variants type annotation
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.8, 
+      
+      ease: [0.25, 0.46, 0.45, 0.94] 
+    }
+  },
+};
+
+// Add  Variants type annotation
+const imageVariants: Variants = {
+  hidden: { opacity: 0, scale: 1.1 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { 
+      duration: 1.5, 
+      ease: "easeOut" 
+    }
+  },
+};
 
 export default function Hero() {
   return (
-  
-    <section className="relative w-full bg-linear-to-b from-[#E4E8FD] via-[#F2F6FF] to-white overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid min-h-150 grid-cols-1 items-center gap-12 lg:grid-cols-2 pt-10 lg:pt-0"> 
+    <section className="relative w-full min-h-175 bg-[#E4E8FC] overflow-hidden">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 h-full">
+        <div className="relative min-h-175 flex items-center">
           
-          {/* lEFT CONTENT */}
+          {/* LEFT CONTENT */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col items-center text-center lg:items-start lg:text-left z-10"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative z-10 flex flex-col items-start text-left max-w-2xl py-10"
           >
-            {/* Subbheading Label */}
-            <div className="flex items-center gap-5 mb-8 top-4">
-              <div className="h-0.5 w-12 bg-[#3E68FF]"></div>
+            {/* Subheading Label */}
+            <motion.div variants={fadeUpVariants} className="flex items-center gap-5 mb-8">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: 48 }}
+                transition={{ duration: 1, delay: 0.5, ease: "circOut" }}
+                className="h-0.5 bg-[#3E68FF]"
+              ></motion.div>
               <span className="font-inter text-[#3E68FF] font-medium text-lg">
                 Manage Salaries, Without Stress
               </span>
-            </div>
+            </motion.div>
 
             {/* Heading */}
-            <h1 className="font-istok font-bold leading-tight text-gray-900 text-4xl sm:text-5xl md:text-6xl lg:text-[80px]">
+            <motion.h1 
+              variants={fadeUpVariants}
+              className="font-istok font-bold leading-tight text-gray-900 text-4xl sm:text-5xl md:text-6xl lg:text-[80px]"
+            >
               Streamline Your{" "}
-              <span className="text-[#42A5E8]">Payroll</span> Today
-            </h1>
+              <motion.span 
+                initial={{ color: "#1F2937" }} 
+                animate={{ color: "#42A5E8" }}
+                transition={{ duration: 1.5, delay: 0.8 }}
+                className="inline-block"
+              >
+                Payroll
+              </motion.span>{" "}
+              Today
+            </motion.h1>
 
             {/* Description */}
-            <p className="mt-6 max-w-xl font-inter text-[#6D6D6D] text-base sm:text-lg lg:text-[20px] leading-relaxed">
-              Automate salary calculations, generate pay-slips in one click, and manage employee records with our all-in-one payroll suite.
-            </p>
-
-            {/* Feature Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-10 flex flex-wrap items-center justify-center gap-6 lg:justify-start"
+            <motion.p 
+              variants={fadeUpVariants}
+              className="mt-6 max-w-xl font-inter text-[#6D6D6D] text-base sm:text-lg lg:text-[20px] leading-relaxed"
             >
-              {/* Button  */}
-              <div className="flex items-center justify-center gap-3 rounded-full border border-[#42A5E8]/20 bg-[#42A5E8] w-54 h-14 shadow-sm hover:shadow-md transition-shadow px-6">
-                <span className="font-inter lg:text-[20px] font-medium text-white">
+              Automate salary calculations, generate pay-slips in one click, and manage employee records with our all-in-one payroll suite.
+            </motion.p>
+
+            {/* CTA Button */}
+            <motion.div variants={fadeUpVariants} className="mt-10">
+              <motion.div 
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-3 rounded-full bg-[#42A5E8] hover:bg-[#3B94D1] w-fit px-8 h-14 shadow-lg transition-all cursor-pointer group"
+              >
+                <span className="font-inter text-[20px] font-medium text-white">
                   Learn More
                 </span>
-                <ArrowRight className="h-5 w-5 text-white" />
-              </div>
-
+                <ArrowRight className="h-5 w-5 text-white group-hover:translate-x-1 transition-transform" />
+              </motion.div>
             </motion.div>
           </motion.div>
 
           {/* RIGHT IMAGE */}
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative flex justify-center lg:justify-end lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
-          >
-            <Image
-              src="/bgmain1.png"
-              alt="Payroll dashboard preview"
-              width={1024}
-              height={769}
-              priority
-              
-              className="w-full max-w-lg lg:max-w-none lg:h-full object-contain object-right" 
-            />
-          </motion.div>
+          <div className="absolute inset-y-0 right-0 w-full lg:w-[70%] h-full pointer-events-none">
+            <motion.div 
+              variants={imageVariants}
+              initial="hidden"
+              animate="visible"
+              className="relative w-full h-full min-h-175"
+            >
+              <div className="absolute inset-0 -right-8 lg:-right-32">
+                <Image
+                  src="/bgmain.png"
+                  alt="Payroll dashboard preview"
+                  width={1023}
+                  height={769}
+                  priority
+                  className="w-full h-full object-cover object-right" 
+                />
+                
+                {/* Gradient Overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(88.44deg, #E4E8FC 1.19%, rgba(228, 232, 252, 0.5) 25%, rgba(11, 11, 11, 0) 60%)'
+                  }}
+                ></div>
+              </div>
+            </motion.div>
+          </div>
 
         </div>
       </div>

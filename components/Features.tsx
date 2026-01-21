@@ -91,7 +91,7 @@ export default function Features() {
                     {item.challengeTitle}
                   </h3>
                 </div>    
-                <div className="w-16 h-[2px] bg-[#393939] mb-6"></div>
+                <div className="w-16 h-0.5 bg-[#393939] mb-6"></div>
    
                 <div>
                   <span className="block text-[12px] font-bold text-[#5D74F1] tracking-wider uppercase mb-2 font-inter">

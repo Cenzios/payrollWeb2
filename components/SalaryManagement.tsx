@@ -25,7 +25,7 @@ export default function SalaryManagement() {
             className="relative mx-auto w-full max-w-md lg:max-w-none order-last lg:order-first"
           >
             <Image
-              src="/salary.png"
+              src="/salary1.png"
               alt="Employee Salary Management Dashboard"
               width={1000}
               height={800}

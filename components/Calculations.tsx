@@ -68,7 +68,7 @@ export default function Calculations() {
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
             <Image
-              src="/calculate1.png"
+              src="/calculate2.png"
               alt="Automate Salary Calculation Interface"
               width={1000}
               height={800}
