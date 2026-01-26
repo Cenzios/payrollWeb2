@@ -24,11 +24,11 @@ export default function Reporting() {
             viewport={{ once: true }}
             className="mx-auto max-w-xl lg:mx-0"
           >
-            <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
+            <h2 className="text-center lg:text-left text-[24px] sm:text-[60px] lg:text-[60px] font-bold tracking-tight text-gray-900  font-istok ">
               <span className="text-[#42A5E8] block mb-2">Multi-Company</span>
               Management & Control
             </h2>
-            <p className="mt-6 text-[16px] leading-8 text-[#525252] font-inter">
+            <p className="mt-6 text-[14px] sm:text-[16px] leading-8 text-[#525252] font-inter">
               Position the platform as a powerful tool for group admins or accountants who handle more than one business entity.
             </p>
             
@@ -42,10 +42,10 @@ export default function Reporting() {
                   viewport={{ once: true }}
                   className="flex items-center gap-x-3"
                 >
-                  <div className="flex-none rounded-full bg-[#42A5E8] p-1">
-                    <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  <div className="flex-none rounded-full bg-[#42A5E8] p-1 mt-0.5 sm:mt-1">
+                    <Check className="h-2 w-2 sm:h-4 sm:w-4 text-white" strokeWidth={3} />
                   </div>
-                  <span className="text-[16px] font-regular text-[#000000] font-inter">
+                  <span className="text-[14px] sm:text-[16px] font-regular text-[#000000] font-inter">
                     {point}
                   </span>
                 </motion.li>

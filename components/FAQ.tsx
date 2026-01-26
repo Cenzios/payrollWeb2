@@ -35,60 +35,56 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-white py-16 sm:py-24 flex items-center justify-center">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 w-full">
+    <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 flex items-center justify-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* Main Box Wrapper */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-white border border-[#42A5E8] rounded-[40px] shadow-[0_10px_40px_-10px_rgba(66,165,232,0.2)] p-8 sm:p-12 lg:p-20"
+          className="bg-white border border-[#42A5E8] rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] shadow-[0_10px_40px_-10px_rgba(66,165,232,0.2)] p-6 sm:p-8 md:p-12 lg:p-20"
         >
           
-          {/* Grid Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start lg:items-center">
             
-            {/*left Column */}
             <div className="lg:col-span-5 text-left">
-              <span className="text-[#42A5E8] font-bold tracking-widest uppercase font-inter text-sm mb-4 block">
+              <span className="text-[#42A5E8] font-bold tracking-widest uppercase font-inter text-[11px] sm:text-[12px] lg:text-[14px] mb-3 sm:mb-4 block">
                 FAQ
               </span>
-              <h2 className="text-[32px] sm:text-[40px] leading-tight font-bold tracking-tight text-gray-900 font-istok mb-6">
+              <h2 className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-tight font-bold tracking-tight text-gray-900 font-istok mb-4 sm:mb-5 lg:mb-6">
                 Frequently Asked <br />
                 <span className="text-[#42A5E8]">Questions</span>
               </h2>
-              <p className="text-[16px] sm:text-[18px] leading-8 text-[#525252] font-inter">
+              <p className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] leading-relaxed sm:leading-7 lg:leading-8 text-[#525252] font-inter">
                 We compiled a list of answers to address your most pressing questions regarding our System.
               </p>
             </div>
 
-            {/*Right Column*/}
-            <div className="lg:col-span-7 space-y-4">
+            <div className="lg:col-span-7 space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <div 
                   key={index} 
-                  className={`rounded-xl border transition-all duration-300 ${
+                  className={`rounded-lg sm:rounded-xl border transition-all duration-300 ${
                       openIndex === index ? "border-[#42A5E8] bg-gray-50" : "border-gray-200 bg-white"
                   }`}
                 >
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="flex w-full items-center justify-between px-5 py-4 text-left focus:outline-none"
+                    className="flex w-full items-center justify-between px-4 sm:px-5 py-3 sm:py-4 text-left focus:outline-none"
                   >
-                    <span className={`text-[16px] sm:text-[18px] font-semibold transition-colors font-istok pr-6 ${
+                    <span className={`text-[14px] sm:text-[16px] md:text-[17px] lg:text-[18px] font-semibold transition-colors font-istok pr-4 sm:pr-6 ${
                         openIndex === index ? "text-[#42A5E8]" : "text-[#1E1E1E]"
                     }`}>
                       {faq.question}
                     </span>
-                    <span className={`flex-none ml-4 transition-colors ${
+                    <span className={`flex-none ml-2 sm:ml-4 transition-colors ${
                         openIndex === index ? "text-[#42A5E8]" : "text-gray-400"
                     }`}>
                       {openIndex === index ? (
-                        <Minus className="h-5 w-5" />
+                        <Minus className="h-4 w-4 sm:h-5 sm:w-5" />
                       ) : (
-                        <Plus className="h-5 w-5" />
+                        <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
                       )}
                     </span>
                   </button>
@@ -102,8 +98,8 @@ export default function FAQ() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-5 pt-0">
-                          <p className="text-[14px] sm:text-[16px] leading-6 text-[#6D6D6D] font-inter">
+                        <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-0">
+                          <p className="text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed sm:leading-6 text-[#6D6D6D] font-inter">
                             {faq.answer}
                           </p>
                         </div>

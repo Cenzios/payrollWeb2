@@ -41,7 +41,8 @@ export default function SalaryManagement() {
             viewport={{ once: true }}
             className="mx-auto max-w-xl lg:mx-0"
           >
-            <h2 className="text-[40px] font-bold tracking-tight text-gray-900 sm:text-5xl font-istok">
+            {/*Mobile text-[32px], Tablet/Web restores to text-5xl  */}
+            <h2 className=" text-center lg:text-left text-[32px] sm:text-[42px] leading-tight font-bold tracking-tight text-gray-900 font-istok">
               <span className="text-[#42A5E8]">Effortless</span> Employee Profile Management
             </h2>
                   
@@ -55,10 +56,16 @@ export default function SalaryManagement() {
                   viewport={{ once: true }}
                   className="flex items-start gap-x-3"
                 >
-                  <div className="flex-none rounded-full bg-[#42A5E8] p-1 mt-1">
-                    <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  {/* 
+                       mt-0.5 for mobile aligns with 14px, mt-1 for web
+                      Icon size h-3 w-3 for mobile, h-4 w-4 for web 
+                  */}
+                  <div className="flex-none rounded-full bg-[#42A5E8] p-1 mt-0.5 sm:mt-1">
+                    <Check className="h-2 w-2 sm:h-4 sm:w-4 text-white" strokeWidth={3} />
                   </div>
-                  <span className="text-[16px] font-regular text-[#000000] font-inter">
+                  
+                 
+                  <span className="text-[14px] sm:text-[16px] font-regular text-[#000000] font-inter">
                     {point}
                   </span>
                 </motion.li>
