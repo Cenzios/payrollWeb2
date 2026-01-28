@@ -35,37 +35,87 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 flex items-center justify-center">
+    <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 flex items-center justify-center overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
         
         <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white border border-[#42A5E8] rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] shadow-[0_10px_40px_-10px_rgba(66,165,232,0.2)] p-6 sm:p-8 md:p-12 lg:p-20"
+          className="bg-white border border-[#42A5E8] rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] shadow-[0_10px_40px_-10px_rgba(66,165,232,0.2)] p-6 sm:p-8 md:p-12 lg:p-20 relative"
         >
+          {/* Decorative corner glows */}
+          <motion.div
+            className="absolute -top-4 -right-4 w-24 h-24 bg-blue-200/30 rounded-full blur-2xl"
+            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-4 -left-4 w-32 h-32 bg-indigo-200/30 rounded-full blur-2xl"
+            animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+          />
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start lg:items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-start lg:items-center relative z-10">
             
             <div className="lg:col-span-5 text-left">
-              <span className="text-[#42A5E8] font-bold tracking-widest uppercase font-inter text-[11px] sm:text-[12px] lg:text-[14px] mb-3 sm:mb-4 block">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-[#42A5E8] font-bold tracking-widest uppercase font-inter text-[11px] sm:text-[12px] lg:text-[14px] mb-3 sm:mb-4 block"
+              >
                 FAQ
-              </span>
-              <h2 className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-tight font-bold tracking-tight text-gray-900 font-istok mb-4 sm:mb-5 lg:mb-6">
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-tight font-bold tracking-tight text-gray-900 font-istok mb-4 sm:mb-5 lg:mb-6"
+              >
                 Frequently Asked <br />
                 <span className="text-[#42A5E8]">Questions</span>
-              </h2>
-              <p className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] leading-relaxed sm:leading-7 lg:leading-8 text-[#525252] font-inter">
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] leading-relaxed sm:leading-7 lg:leading-8 text-[#525252] font-inter"
+              >
                 We compiled a list of answers to address your most pressing questions regarding our System.
-              </p>
+              </motion.p>
             </div>
 
             <div className="lg:col-span-7 space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
-                <div 
-                  key={index} 
-                  className={`rounded-lg sm:rounded-xl border transition-all duration-300 ${
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.5 + index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    x: 5,
+                    transition: { duration: 0.2 }
+                  }}
+                  className={`rounded-lg sm:rounded-xl border transition-all duration-300 cursor-pointer ${
                       openIndex === index ? "border-[#42A5E8] bg-gray-50" : "border-gray-200 bg-white"
                   }`}
                 >
@@ -78,15 +128,22 @@ export default function FAQ() {
                     }`}>
                       {faq.question}
                     </span>
-                    <span className={`flex-none ml-2 sm:ml-4 transition-colors ${
-                        openIndex === index ? "text-[#42A5E8]" : "text-gray-400"
-                    }`}>
+                    <motion.span 
+                      className={`flex-none ml-2 sm:ml-4 transition-colors ${
+                          openIndex === index ? "text-[#42A5E8]" : "text-gray-400"
+                      }`}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        rotate: openIndex === index ? 90 : -90,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {openIndex === index ? (
                         <Minus className="h-4 w-4 sm:h-5 sm:w-5" />
                       ) : (
                         <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
                       )}
-                    </span>
+                    </motion.span>
                   </button>
                   
                   <AnimatePresence>
@@ -95,18 +152,23 @@ export default function FAQ() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-0">
+                        <motion.div 
+                          initial={{ y: -10 }}
+                          animate={{ y: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="px-4 sm:px-5 pb-4 sm:pb-5 pt-0"
+                        >
                           <p className="text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed sm:leading-6 text-[#6D6D6D] font-inter">
                             {faq.answer}
                           </p>
-                        </div>
+                        </motion.div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               ))}
             </div>
 

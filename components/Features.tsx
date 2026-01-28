@@ -2,6 +2,7 @@
 
 import { CircleDollarSign, MousePointerClick, Users, FileText } from "lucide-react";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 //challenge data
 const challenges = [
@@ -55,6 +56,29 @@ const features = [
 ];
 
 export default function Features() {
+  // Smooth staggered animation for cards
+  const containerVariants: Variants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  // Fade up animation with easing
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
+      },
+    },
+  };
+
   return (
     <section id="features" className="py-16 sm:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">   
@@ -62,9 +86,9 @@ export default function Features() {
         {/*challanges and solutions section */}
         <div className="mb-24"> 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
             className="mx-auto max-w-3xl text-center mb-12 sm:mb-16"
           >
@@ -73,15 +97,19 @@ export default function Features() {
             </h2>
           </motion.div>
 
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mx-auto grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          >
             {challenges.map((item, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                // Reduced padding on mobile (p-6) vs desktop (sm:p-8)
+                variants={fadeUp}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="flex flex-col rounded-2xl bg-white p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.08)] border border-gray-100 hover:shadow-lg transition-all"
               >
                 <div className="mb-4 sm:mb-6">
@@ -113,7 +141,7 @@ export default function Features() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         
@@ -121,9 +149,9 @@ export default function Features() {
        
         <div>
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
             className="mx-auto max-w-3xl text-center mb-12 sm:mb-16"
           >
@@ -135,14 +163,19 @@ export default function Features() {
             </p>
           </motion.div>
 
-          <div className="mx-auto grid max-w-2xl grid-cols-2 gap-4 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mx-auto grid max-w-2xl grid-cols-2 gap-4 sm:gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+          >
             {features.map((feature, index) => (
               <motion.div 
                 key={index} 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                variants={fadeUp}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className={`flex flex-col rounded-2xl p-5 sm:p-8 transition-all hover:shadow-lg border border-transparent hover:border-gray-100 ${feature.cardBg}`}
               >
                 <div className={`mb-4 sm:mb-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl ${feature.iconBg}`}>
@@ -158,7 +191,7 @@ export default function Features() {
                 </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
       </div>
