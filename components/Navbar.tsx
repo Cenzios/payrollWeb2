@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X, ArrowRight } from "lucide-react"; 
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -128,6 +128,18 @@ export default function Navbar() {
           ))}
         </div>
 
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="https://payroll.dev.cenzios.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#42A5E8] to-[#2E7BB8] px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#42A5E8]/25 transition-all duration-300 hover:shadow-lg hover:shadow-[#42A5E8]/40 hover:scale-[1.03] active:scale-[0.98]"
+          >
+            Sign Up
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+
       </motion.nav>
 
       {/* Mobile Menu Overlay */}
@@ -202,6 +214,16 @@ export default function Navbar() {
                       {link.name}
                     </Link>
                   ))}
+
+                  <a
+                    href="https://payroll.dev.cenzios.com/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 w-full max-w-xs inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#42A5E8] to-[#2E7BB8] px-6 py-3 text-base font-semibold text-white shadow-md shadow-[#42A5E8]/25 transition-all duration-300 hover:shadow-lg hover:shadow-[#42A5E8]/40 active:scale-[0.98]"
+                  >
+                    Sign Up
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
                 </div>
               </div>
             </motion.div>
